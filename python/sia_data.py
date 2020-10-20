@@ -23,14 +23,14 @@ class SiaDB(object):
 
 	################################# General Endpoints #################################
 
-	def currentStatus(self, endpoint = ":3500/navigator-api/status"):
+	def currentStatus(self, ENDPOINT = ":3500/navigator-api/status"):
 		''' Current status ( consensus ) | <class 'list'>
 		ex:	[{"consensusblock":282682,"lastblock":282682,"mempool":97,"coinsupply":44930512992,"totalTx":"14332509","heartbeat":1603223359984,"peers":8,"version":"1.4.10"}]
 		'''
 		URL = self.ROOT + ENDPOINT
 		return query(URL)
 
-	def skynetData(self, endpoint = "/dbs/skynet_evo.json"):
+	def skynetData(self, ENDPOINT = "/dbs/skynet_evo.json"):
 		''' File count and file size on skynet sorted by address | <class 'list'>
 		ex:	[
 			 {"date":1584835200000,
@@ -41,7 +41,7 @@ class SiaDB(object):
 		URL = self.ROOT + ENDPOINT
 		return query(URL)
 
-	def blockchainHistory(self, endpoint = "/dbs/blockchainsize.json"):
+	def blockchainHistory(self, ENDPOINT = "/dbs/blockchainsize.json"):
 		''' Consensus.db file size (GB), real blockchain size (bytes) and average block size (kB) evolution | <class 'list'>
 		ex:	[
 			 {"time":1513555200000,"consensussize":8},...,
@@ -86,35 +86,35 @@ class SiaDB(object):
 
 	################################# Host & User Data #################################
 
-	def activeHostHistory(self, endpoint = "/dbs/activehosts.json"):
+	def activeHostHistory(self, ENDPOINT = "/dbs/activehosts.json"):
 		''' Host history | <class 'list'>
 		ex:	[{"date":1506384000000,"hosts":630},...,{"date":1603152000000,"hosts":256,"hostsonline":310}]
 		'''
 		URL = self.ROOT + ENDPOINT
 		return query(URL)
 
-	def bandwidthPriceHistory(self, endpoint = "/dbs/bandwidthpricesdb.json"):
+	def bandwidthPriceHistory(self, ENDPOINT = "/dbs/bandwidthpricesdb.json"):
 		''' Avg. upload and download price history | <class 'list'> | price units in SC and USD
 		ex:	[{"date":1505001600000,"up":31.1,"down":23.14},...,{"date":1603152000000,"up":236.86,"down":405.52,"upusd":0.66,"downusd":1.14}]
 		'''
 		URL = self.ROOT + ENDPOINT
 		return query(URL)
 
-	def storageHistory(self, endpoint = "/dbs/storage.json"):
+	def storageHistory(self, ENDPOINT = "/dbs/storage.json"):
 		''' Historical available and utilized storage data | <class 'list'> | units in TBs
 		ex:	[{"date":1505088000000,"total":3131.175,"used":73.92},...,{"date":1603152000000,"total":2152.53,"used":718.93}]
 		'''
 		URL = self.ROOT + ENDPOINT
 		return query(URL)
 
-	def storagePriceHistory(self, endpoint = "/dbs/storagepricesdb.json"):
+	def storagePriceHistory(self, ENDPOINT = "/dbs/storagepricesdb.json"):
 		''' Avg price, contract fees, siafunds fees | <class 'list'> | price, newcontractformation units in SC/TB/mo, usd units in USD/TB/mo, sfperfee units in ???
 		ex:	[{"date":1505001600000,"price":209.44,"sfperfees":11.75},...,{"date":1603152000000,"price":1120.7,"newcontractformation":55.69,"usd":3.14,"sfperfees":7.56}]
 		'''
 		URL = self.ROOT + ENDPOINT
 		return query(URL)
 
-	def usageHistory(self, endpoint = "/dbs/ussage.json"):
+	def usageHistory(self, ENDPOINT = "/dbs/ussage.json"):
 		''' Percentage of network storage (available v. used) | <class 'list'>
 		ex:	[{"date":1505088000000,"used":2.36,"free":97.64},...,{"date":1603152000000,"used":33.4,"free":66.6}]
 		'''
@@ -128,28 +128,28 @@ class SiaDB(object):
 		URL = self.ROOT + ENDPOINT
 		return query(URL)
 
-	def supplySchedule(self, endpoint = "/dbs/coinsupplydb.json"):
+	def supplySchedule(self, ENDPOINT = "/dbs/coinsupplydb.json"):
 		''' Historical and predicted coin supply | <class 'list'> | units in billions (of Siacoins)
 		ex:	[{"time":1433548800000,"coinsupply":0.005999810000000001},...,{"time":1792195200000,"coinsupply":54.31376299194149}]
 		'''
 		URL = self.ROOT + ENDPOINT
 		return query(URL)
 
-	def inflationSchedule(self, endpoint = "/dbs/inflationdb.json"):
+	def inflationSchedule(self, ENDPOINT = "/dbs/inflationdb.json"):
 		''' Historical and predicted inflation metrics | <class 'list'> | units in ?
 		ex:	[{"time":1433548800000,"coinsupply":0.005999810000000001},...,{"time":1792195200000,"coinsupply":54.31376299194149}]
 		'''
 		URL = self.ROOT + ENDPOINT
 		return query(URL)
 
-	def burnHistory(self, endpoint = "/dbs/burn.json"):
+	def burnHistory(self, ENDPOINT = "/dbs/burn.json"):
 		''' Historical (cumulative) burned Siacoins from failed contracts | <class 'list'> | units in Siacoins
 		ex:	[{"time":1433548800,"burnt":0},...,{"time":1792108800000,"inflation":2.88},{"time":1792195200000,"inflation":2.88}]
 		'''
 		URL = self.ROOT + ENDPOINT
 		return query(URL)
 
-	def blockRewardHistory(self, endpoint = "/dbs/blockrewarddb.json"):
+	def blockRewardHistory(self, ENDPOINT = "/dbs/blockrewarddb.json"):
 		''' Historical block rewards | <class 'list'> | units in Siacoins
 		ex:	[{"time":1436313600000,"inflation":571.27},...,{"time":1823731200000,"blockreward":30000}]
 		'''
@@ -157,14 +157,14 @@ class SiaDB(object):
 		return query(URL)
 
 	################################# Transaction Data #################################
-	def txnHistory(self, endpoint = "/dbs/transactionsdb.json"):
+	def txnHistory(self, ENDPOINT = "/dbs/transactionsdb.json"):
 		''' Historical cumlative and daily transaction data | <class 'list'>
 		ex:	[{"time":1433548800000,"totaltx":"20","daytx":18},...,{"time":1603065600000,"totaltx":"14316540","daytx":26760}]
 		'''
 		URL = self.ROOT + ENDPOINT
 		return query(URL)
 
-	def txnFeeHistory(self, endpoint = "/dbs/txfeesdb.json"):
+	def txnFeeHistory(self, ENDPOINT = "/dbs/txfeesdb.json"):
 		''' Fees per txn, avg fees per block and cumulative fees | <class 'list'>
 		ex:	[
 			 {"time":1433548800000,"txfee":0,"feeperblock":0,"feecount":"0"},...,
@@ -176,7 +176,7 @@ class SiaDB(object):
 
 	################################# Siafunds Data #################################
 
-	def siafundsMetrics(self, endpoint = "/dbs/sfdb.json"):
+	def siafundsMetrics(self, ENDPOINT = "/dbs/sfdb.json"):
 		''' Siafunds profitability (daily, 7d-avg [daily, monthly, historic]) | <class 'list'> | units in Siacoins
 		ex:	[
 			 {"time":1433548800000,"historicSF":0,"SF24h":0,"SF30d":0},...,
